@@ -5,16 +5,29 @@
 	margin-left: 375px;
 	margin-right:375px;
 	margin-top: 450px;
-	margin-bottom: 25px;
+	margin-bottom: 65px;
 	font-size: 45px;
 }
 .hit{
-	background=color: yellow;
-	text-align: center;
-
-	font-size: 20px;
+	color: yellow;
+	float:right;
+	background-color: red;
+	font-size: 50px;
 }
 .pass{
 	text-align: right;
 	margin-bottom:65px;
+	font-size: 50px;
+	color: yellow;
+	float: left;
+	background-color: blue;
+}
+.bet{
+	color: yellow;
+	background-color: green;
+	font-size: 50px;
+
+}
+.buttons{
+	text-align:center;
 }
