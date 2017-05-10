@@ -7,6 +7,7 @@ var playerVal=0;
 var dealerPoints=0;
 var playerPoints=0;
 var card;
+var dealerCards[];
 
 function createCards(){
 	cards=[];
@@ -35,7 +36,7 @@ function DrawCard(){
 
 function addPlayerCard(){
 	DrawCard();
-	if(card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
+	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
 	playerVal+=card.value;
 	playerPoints+=parseInt(card.value);
 	console.log("your cards are "+playerVal);
@@ -71,35 +72,40 @@ else {
 function addDealerCard(){
 
 	DrawCard();
-	if(card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
+	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
 	dealerVal+=card.value;
 	dealerPoints+=parseInt(card.value);
 	console.log("dealer cards are "+dealerVal);
 	console.log(dealerPoints);
+	dealerCards.push(dealerVal);
 }
 else if(card.value=="A"){
 	dealerVal+="A";
 	dealerPoints+=1;
 	console.log("dealer cards are "+dealerVal);
 	console.log(dealerPoints);
+	dealerCards.push(dealerVal);
 }
 else if(card.value=="J"){
 	dealerVal+="J";
 	dealerPoints+=10;
 	console.log("dealer cards are "+dealerVal);
 	console.log(dealerPoints);
+	dealerCards.push(dealerVal);
 }
 else if(card.value=="Q"){
 	dealerVal+="Q";
 	dealerPoints+=10;
 	console.log("dealer cards are "+dealerVal);
 	console.log(dealerPoints);
+	dealerCards.push(dealerVal);
 }
 else{
 	dealerVal+="K";
 	dealerPoints+=10;
 	console.log("dealer cards are "+dealerVal);
 	console.log(dealerPoints);
+	dealerCards.push(dealerVal);
 }
 }
 function Hit(){
@@ -118,9 +124,9 @@ function checkforOver(){
 function Pass(){
 	DealerMove();
 	checkforOver();
-	DealerMOve();
+	DealerMove();
 	checkforOver();
-	DealerMOve();
+	DealerMove();
 	checkforOver();
 	if(playerPoints=dealerPoints){
 		console.log("it's a tie");
@@ -129,11 +135,20 @@ function Pass(){
 		console.log("you won!");
 	}
 	else if(playerPoints<dealerPoints){
-		consoole.log("you lost");
+		console.log("you lost");
 	}
 	function DealerMove(){
 		if(dealerPoints<=16){
 			addDealerCard();
+		}
+	}
+	function dealerAceCheck(){
+		for(vari=0;i<dealerCards.length;i++){
+			if(dealerPoints<=11){
+				dealerPoints+=10;
+				console.log("Ace activated as 11");
+			}
+			console.log("Dealer has an ace");
 		}
 	}
 }
