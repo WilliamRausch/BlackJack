@@ -107,6 +107,9 @@ else{
 	console.log(dealerPoints);
 	dealerCards.push(dealerVal);
 }
+for(i=0;i<=dealerVal.length;i++){
+	dealerCards[i]=dealerVal[i];
+}
 }
 function Hit(){
 	addDealerCard();
@@ -144,12 +147,15 @@ function Pass(){
 	}
 	function dealerAceCheck(){
 		for(vari=0;i<dealerCards.length;i++){
+			if(dealerCards[i]="A"){
+				console.log("Dealer has an ace");
 			if(dealerPoints<=11){
 				dealerPoints+=10;
 				console.log("Ace activated as 11");
 			}
-			console.log("Dealer has an ace");
+			
 		}
+	}
 	}
 }
 
