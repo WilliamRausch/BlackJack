@@ -45,7 +45,6 @@ function DrawCard(){
 
 function addPlayerCard(){
 	DrawCard();
-	numofPlayerCards++;
 	if(card.suit=="H"){
 		playerSuit+="H";
 	}
@@ -94,8 +93,9 @@ else {
 for(i=0;i<=playerSuit.length-1;i++){
 	playerSuits[i]=playerSuit[i+1];
 
-	//playerSuitDisplay();
+	
 }
+playerAceCheck();
 
 }
 function addDealerCard(){
@@ -157,9 +157,11 @@ for(i=0;i<=dealerSuit.length-1;i++){
 
 }
 function Hit(){
-	addDealerCard();
+	DealerMove();
 	addPlayerCard();
 	checkforOver();
+	playerSuitDisplay();
+	numofPlayerCards+=1;
 }
 function checkforOver(){
 	if(dealerPoints>21){
@@ -170,6 +172,7 @@ function checkforOver(){
 	}
 }
 function Pass(){
+	playerAceCheck();
 	DealerMove();
 	checkforOver();
 	DealerMove();
@@ -193,18 +196,7 @@ function Pass(){
 			addDealerCard();
 		}
 	}
-	function dealerAceCheck(){
-		for(vari=0;i<dealerCards.length;i++){
-			if(dealerCards[i]=="A"){
-				console.log("Dealer has an ace");
-			if(dealerPoints<=11){
-				dealerPoints+=10;
-				console.log("Ace activated as 11");
-			}
-			
-		}
-	}
-	}
+	
 	function playerAceCheck(){
 		for(var i=0; i<=playerCards.length;i++){
 			if(playerCards[i]=='A'){
@@ -221,9 +213,40 @@ function Pass(){
 		}
 	}
 	}
+	function dealerAceCheck(){
+		for(var i=0; i<=dealerCards.length;i++){
+			if(dealerCards[i]=='A'){
+				console.log("Dealer has an ace");
+				if(dealerPoints<=11){
+					dealerPoints+=10;
+					console.log("Dealer Ace activated as 11");
+				}
+				else{
+					console.log("Dealer stays as 1");
+				}
+			
+			
+		}
+	}
+	}
 	function playerSuitDisplay(){
-		if(numofPlayerCards=1){
+		if(numofPlayerCards==0){
 			$('#pcone').css('background-color', 'blue');
+		}
+		if(numofPlayerCards==1){
+			$('#pctwo').css('background-color', 'blue');
+		}
+		if(numofPlayerCards==2){
+			$('#pcthree').css('background-color', 'blue');
+		}
+		if(numofPlayerCards==3){
+			$('#pcfour').css('background-color', 'blue');
+		}
+		if(numofPlayerCards==4){
+			$('#pcfive').css('background-color', 'blue');
+		}
+		if(numofPlayerCards==5){
+			$('#pcsix').css('background-color', 'blue');
 		}
 	}
 	
