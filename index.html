@@ -3,22 +3,47 @@
 <head>
  <link rel='stylesheet' type='text/css' href='style.css'>
 	<title>BlackJack</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='blackjack.js' type='text/javascript'></script>
+
 </head>
 <body>
+
 <div class='bankroll'>Bankroll:</div>
-<div class="buttons">
-<button class ='hit'>HIT</button>
-<button class = 'pass'>Pass</button>
-<button class ='bet'>BET</button>
+
+<div class="container">
+	<div><button id ='hit'>HIT</button></div>
+	<div><button id = 'pass'>Pass</button></div>
+	<div><button id ='bet'>BET</button></div>
 </div>
-<div class='deck'></div>
-<div class="playercard1"></div>
+
+<div class="cardsContainer">
+	<div id="pcone" class="card"></div>
+	<div id="pctwo" class="card"></div>
+	<div id="pcthree" class="card"></div>
+	<div id="pcfour" class="card"></div>
+	<div id="pcfive" class="card"></div>
+	<div id="pcsix" class="card"></div>
+</div>
+
+<div class="cardsContainerTwo">
+	<div id="pcone" class="card"></div>
+	<div id="pctwo" class="card"></div>
+	<div id="pcthree" class="card"></div>
+	<div id="pcfour" class="card"></div>
+	<div id="pcfive" class="card"></div>
+	<div id="pcsix" class="card"></div>
+</div>
+
+<!-- <div ="playercard1"></div>
 <div class="playercar2"></div>
 <div class="playercard3"></div>
 <div class="playercard4"></div>
 <div class="dealercard1>"></div>
 <div class="dealercard2>"></div>
 <div class="dealercard3>"></div>
-<div class="dealercard4>"></div>
+<div class="dealercard4>"></div> -->
+
 </body>
 </html>

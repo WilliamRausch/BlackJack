@@ -1,13 +1,22 @@
+
 var suits = ["H","S","C","D"];
 var values = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 var cards =[];
 var count = 0;
 var dealerVal=0;
 var playerVal=0;
+var playerSuit=0;
+var dealerSuit=0;
 var dealerPoints=0;
 var playerPoints=0;
 var card;
-var dealerCards[];
+var dealerCards=[];
+var playerCards=[];
+var playerSuits=[];
+var dealerSuits=[];
+var numofPlayerCards=0;
+var numofDealerCards=0;
+
 
 function createCards(){
 	cards=[];
@@ -36,6 +45,19 @@ function DrawCard(){
 
 function addPlayerCard(){
 	DrawCard();
+	numofPlayerCards++;
+	if(card.suit=="H"){
+		playerSuit+="H";
+	}
+	if(card.suit=="S"){
+		playerSuit+="S";
+	}
+	if(card.suit=="C"){
+		playerSuit+="C";
+	}
+	if(card.suit=="D"){
+		playerSuit+="D";
+	}
 	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
 	playerVal+=card.value;
 	playerPoints+=parseInt(card.value);
@@ -66,12 +88,31 @@ else {
 	console.log("your cards are "+playerVal);
 	console.log(playerPoints);
 }
-	
+	for(i=0;i<=playerVal.length-1;i++){
+	playerCards[i]=playerVal[i+1];
+}
+for(i=0;i<=playerSuit.length-1;i++){
+	playerSuits[i]=playerSuit[i+1];
+
+	//playerSuitDisplay();
+}
 
 }
 function addDealerCard(){
 
 	DrawCard();
+	if(card.suit=="H"){
+		dealerSuit+="H";
+	}
+	if(card.suit=="S"){
+		dealerSuit+="S";
+	}
+	if(card.suit=="C"){
+		dealerSuit+="C";
+	}
+	if(card.suit=="D"){
+		dealerSuit+="D";
+	}
 	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
 	dealerVal+=card.value;
 	dealerPoints+=parseInt(card.value);
@@ -107,9 +148,13 @@ else{
 	console.log(dealerPoints);
 	dealerCards.push(dealerVal);
 }
-for(i=0;i<=dealerVal.length;i++){
-	dealerCards[i]=dealerVal[i];
+for(i=0;i<=dealerVal.length-1;i++){
+	dealerCards[i]=dealerVal[i+1];
 }
+for(i=0;i<=dealerSuit.length-1;i++){
+	dealerSuits[i]=dealerSuit[i+1];
+}
+
 }
 function Hit(){
 	addDealerCard();
@@ -131,7 +176,7 @@ function Pass(){
 	checkforOver();
 	DealerMove();
 	checkforOver();
-	if(playerPoints=dealerPoints){
+	if(playerPoints==dealerPoints){
 		console.log("it's a tie");
 	}
 	else if(playerPoints>dealerPoints){
@@ -140,14 +185,17 @@ function Pass(){
 	else if(playerPoints<dealerPoints){
 		console.log("you lost");
 	}
+}
 	function DealerMove(){
+		dealerAceCheck();
+
 		if(dealerPoints<=16){
 			addDealerCard();
 		}
 	}
 	function dealerAceCheck(){
 		for(vari=0;i<dealerCards.length;i++){
-			if(dealerCards[i]="A"){
+			if(dealerCards[i]=="A"){
 				console.log("Dealer has an ace");
 			if(dealerPoints<=11){
 				dealerPoints+=10;
@@ -157,7 +205,48 @@ function Pass(){
 		}
 	}
 	}
+	function playerAceCheck(){
+		for(var i=0; i<=playerCards.length;i++){
+			if(playerCards[i]=='A'){
+				console.log("Player has an ace");
+				if(playerPoints<=11){
+					playerPoints+=10;
+					console.log("player Ace activated as 11");
+				}
+				else{
+					console.log("ace stays as 1");
+				}
+			
+			
+		}
+	}
+	}
+	function playerSuitDisplay(){
+		if(numofPlayerCards=1){
+			$('#pcone').css('background-color', 'blue');
+		}
+	}
+	
+
+
+console.log('hello');
+window.onload = function() {
+	createCards();
+	$('#hit').on('click', function(){
+		 console.log("hit");
+		 Hit();
+	
+	});
+	$('#pass').on('click', function(){
+		 console.log("pass");
+		 Pass();
+		 console.log("dealer hand: "+dealerCards);
+		 console.log("player hand: "+playerCards);
+		 console.log("player suits are "+playerSuits);
+		 console.log("Dealer suits are " +dealerSuits);
+		 console.log("player has: "+numofPlayerCards+" cards")
+	});
+	
+
 }
-
-
 
