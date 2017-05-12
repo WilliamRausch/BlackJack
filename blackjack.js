@@ -1,6 +1,6 @@
 
 var suits = ["H","S","C","D"];
-var values = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+var values = ["A","2","3","4","5","6","7","8","9","T","J","Q","K"];
 var cards =[];
 var count = 0;
 var dealerVal=0;
@@ -57,7 +57,7 @@ function addPlayerCard(){
 	if(card.suit=="D"){
 		playerSuit+="D";
 	}
-	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
+	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"&&card.value!="T"){
 	playerVal+=card.value;
 	playerPoints+=parseInt(card.value);
 	console.log("your cards are "+playerVal);
@@ -65,6 +65,12 @@ function addPlayerCard(){
 }
 else if(card.value=="A"){
 	playerVal+="A";
+	playerPoints+=1;
+	console.log("your cards are "+playerVal);
+	console.log(playerPoints);
+}
+else if(card.value=="T"){
+	playerVal+="T";
 	playerPoints+=1;
 	console.log("your cards are "+playerVal);
 	console.log(playerPoints);
@@ -95,7 +101,7 @@ for(i=0;i<=playerSuit.length-1;i++){
 
 	
 }
-playerAceCheck();
+//playerAceCheck();
 
 }
 function addDealerCard(){
@@ -113,7 +119,7 @@ function addDealerCard(){
 	if(card.suit=="D"){
 		dealerSuit+="D";
 	}
-	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"){
+	if(card&&card.value&&card.value!="A"&&card.value!="J"&&card.value!="Q"&&card.value!="K"&&card.value!="T"){
 	dealerVal+=card.value;
 	dealerPoints+=parseInt(card.value);
 	console.log("dealer cards are "+dealerVal);
@@ -122,6 +128,13 @@ function addDealerCard(){
 }
 else if(card.value=="A"){
 	dealerVal+="A";
+	dealerPoints+=1;
+	console.log("dealer cards are "+dealerVal);
+	console.log(dealerPoints);
+	dealerCards.push(dealerVal);
+}
+else if(card.value=="T"){
+	dealerVal+="T";
 	dealerPoints+=1;
 	console.log("dealer cards are "+dealerVal);
 	console.log(dealerPoints);
@@ -403,7 +416,7 @@ function Pass(){
 		}		$("#dcfour").text(dealerCards[3]);
 		}		
 		if(numofDealerCards==5){
-			conosole.log("fifth one");
+			console.log("fifth one");
 			if(dealerSuits[numofDealerCards-1]=='H'){
 				$('#dcfive').css('background-color', 'blue');
 		}		$("#dcfive").text(dealerCards[4]);
