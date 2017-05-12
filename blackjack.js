@@ -187,9 +187,9 @@ function checkforOver(){
 function Pass(){
 	playerAceCheck();
 	DealerMove();
-	checkforOver();
+	
 	DealerMove();
-	checkforOver();
+	
 	DealerMove();
 	checkforOver();
 	if(playerPoints==dealerPoints){
@@ -207,7 +207,7 @@ function Pass(){
 		dealerSuitDisplay();
 		dealerAceCheck();
 
-		if(dealerPoints<=16){
+		if(dealerPoints<=16||dealerPoints<=playerPoints){
 			addDealerCard();
 			numofDealerCards+=1;
 			checkforOver();
