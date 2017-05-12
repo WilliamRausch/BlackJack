@@ -210,6 +210,7 @@ function Pass(){
 		if(dealerPoints<=16){
 			addDealerCard();
 			numofDealerCards+=1;
+			checkforOver();
 		}
 	}
 	
