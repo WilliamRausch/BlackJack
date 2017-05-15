@@ -178,10 +178,10 @@ function Hit(){
 }
 function checkforOver(){
 	if(dealerPoints>21){
-		alert("you won!");
+		alert("dealer over 21");
 	}
 	if(playerPoints>21){
-		alert("you lost")
+		alert("player over 21");
 	}
 }
 function Pass(){
@@ -195,10 +195,10 @@ function Pass(){
 	if(playerPoints==dealerPoints){
 		alert("it's a tie");
 	}
-	else if(playerPoints>dealerPoints){
+	else if(playerPoints>dealerPoints&&playerPoints<=21){
 		alert("you won!");
 	}
-	else if(playerPoints<dealerPoints){
+	else if(playerPoints<dealerPoints&&dealerPoints<=21){
 		alert("you lost");
 	}
 }
